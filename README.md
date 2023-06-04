@@ -11,3 +11,7 @@ You may also initialize a number either as the result of an arithmetic (not-in-p
 Lastly, to compare 2 numbers you can use the compare() function.
   
 Sorry for the lack of proper documentation but a lot of components may change as this is still wip.
+ 
+# install
+ just download bignumbers.c and include it into your code, no additional library is required
+ 

@@ -1,5 +1,5 @@
-#include <stdio.h>
-
+//#include <stdio.h>
+#include <iostream>
 //IF THESE TYPEDEFS CAUSE COMPATIBILITY ISSUES, ERASE THEM; THEY MIGHT OVERRIDE YOUR DEFAULT uintN_t(s)
 
 typedef unsigned char uint8_t;
@@ -70,7 +70,7 @@ void copy(big_number* dst, big_number* src) {
 
 }
 
-uint8_t compare(big_number x1, big_number x2) {
+int8_t compare(big_number x1, big_number x2) {
 
 	//returns 1 if x1 > x2, -1 if x1 < x2, 0 if they are equal
 
@@ -219,6 +219,13 @@ void unsigned_subtract(big_number *x1, big_number x2) {
 	return;
 }
 
+void unsigned_subtract_2(big_number x1, big_number *x2) {
+	big_number tmp;
+	copy(&tmp, &x1);
+	unsigned_subtract(&tmp, *x2);
+	copy(x2, &tmp);
+}
+
 
 big_number shift_left(big_number x1, uint16_t word_shift, uint8_t bit_shift) {
 
@@ -328,6 +335,8 @@ big_number divide(big_number* x1, big_number x2) {
 	half_number to_add;
 
 	while (logdiff >= 0) {				//don't worry, it will terminate... eventually
+
+		//std::cout << logdiff << " ";
 
 		int8_t start = 0;
 		int8_t end = 31;
@@ -480,4 +489,3 @@ big_number subtract(big_number x1, big_number x2) {
 	x2.sign = 1 - x2.sign;
 	return add(x1, x2);
 }
-
